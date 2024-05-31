@@ -20,7 +20,7 @@ def create_new_student(student: StudentCreate, db: Session = Depends(get_db)):
 def read_student(student_id: int, db: Session = Depends(get_db)):
     db_student = get_student(db, student_id)
     if db_student is None:
-        raise HTTPException(status_code=404, detail="Student not found")
+        raise HTTPException(status_code=404, detail="Ученик не найден")
     return db_student
 
 

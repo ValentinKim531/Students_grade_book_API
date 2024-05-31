@@ -4,23 +4,21 @@ from schemas.score import Score, ScoreCreate
 from crud.score import (get_score, get_scores, create_score,
                         update_score, delete_score)
 from database import get_db
+from validation.validation import validate_score
 
 router = APIRouter()
 
 
-@router.post("/", response_model=Score)
+@router.post("/", response_model=Score, dependencies=[Depends(validate_score)])
 def create_new_score(score: ScoreCreate, db: Session = Depends(get_db)):
-    try:
-        return create_score(db, score)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+    return create_score(db, score)
 
 
 @router.get("/{score_id}", response_model=Score)
 def read_score(score_id: int, db: Session = Depends(get_db)):
     db_score = get_score(db, score_id)
     if db_score is None:
-        raise HTTPException(status_code=404, detail="Score not found")
+        raise HTTPException(status_code=404, detail="Оценка не найдена")
     return db_score
 
 
