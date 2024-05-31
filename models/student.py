@@ -17,4 +17,8 @@ class Student(Base):
         server_default=func.now(),
         onupdate=func.now())
 
-    scores = relationship("Score", back_populates="student")
+    scores = relationship(
+        "Score",
+        back_populates="student",
+        cascade="all, delete-orphan"
+    )

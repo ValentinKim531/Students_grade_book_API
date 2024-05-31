@@ -86,28 +86,8 @@ http://127.0.0.1:8000/docs
 }
 ```
 
-### Получение списка всех студентов
-GET /students/
-
-`Пример ответа:`
-
-
-```[
-  {
-    "id": 1,
-    "first_name": "Valentin",
-    "last_name": "Kim",
-    "birthdate": "1982-01-20",
-    "email": "valentink@yandex.ru",
-    "created_at": "2024-01-01T00:00:00",
-    "updated_at": "2024-01-01T00:00:00",
-    "scores": []
-  }
-]
-```
-
 ### Получение списка всех студентов с их оценками
-GET /students/with-scores/
+GET /students/
 
 `Пример ответа:`
 
@@ -175,24 +155,6 @@ GET /students/{student_id}/with-scores/
 }
 ```
 
-
-### Получение информации о конкретном студенте
-GET /students/{student_id}
-
-`Пример ответа:`
-
-```
-{
-  "id": 1,
-  "first_name": "Valentin",
-  "last_name": "Kim",
-  "birthdate": "1982-01-20",
-  "email": "valentink@yandex.ru",
-  "created_at": "2024-01-01T00:00:00",
-  "updated_at": "2024-01-01T00:00:00",
-  "scores": []
-}
-```
 
 ### Обновление информации о конкретном студенте 
 PATCH /students/{student_id}
